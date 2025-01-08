@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --background: #101114;
+    --primary-color: #1C1D20;
+    --secondary-color: #4A4D57;
+    --accent-color: #B300FF;
+    --text-color: #F9F9F9;
+}
+
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+}
+
+body{
+    min-height: 100vh;
+    padding: 10px;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    color: var(--accent-color);
+    text-transform: uppercase;
+    margin: 15px;
+}
+.wrapper{
+    width: 700px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#todo-input{
+    padding: 10px;
+    width: 100%;
+    background: none;
+    border: 2px solid var(--secondary-color);
+    border-radius: 100px;
+    color: var(--text-color);
+    caret-color: var(--accent-color);
+    font: inherit;
+}
+#todo-input:focus{
+    outline: none;
+}
+form{
+    position: relative;/* pour que le btn add se deplacer entre le form non dans tout la page */
+}
+#add-btn{
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 100px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    height: 100%;/* par rapport au parent "form" */
+    width: 10%;
+    font: inherit;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+.todo{
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+}
+.todo .todo-text{
+    padding: 10px;
+    padding-right: 0;
+    flex-grow: 1;
+    transition:  200ms ease;
+    cursor: pointer;
+}
+
+.delete-button{
+    background: none;
+    border: none;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.delete-button i{
+    color: var(--secondary-color)
+}
+.delete-button:hover i{
+    transition: 200ms ease;
+    color: red;
+}
+
+.custom-checkbox {
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0 ;
+    transition:  200ms ease;
+    cursor: pointer;
+}
+.custom-checkbox i {
+    visibility: hidden;
+}
+input[type="checkbox"]:checked ~ .custom-checkbox{
+    background-color: var(--accent-color);
+}
+
+input[type="checkbox"]:checked ~ .custom-checkbox i{
+    visibility: visible;
+    color: var(--primary-color);
+}
+input[type="checkbox"]:checked ~  .todo-text{
+    text-decoration: line-through;
+    color: var(--secondary-color);
+}
+input[type="checkbox"]{
+    display: none;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    html{
+        font-size: 12px;
+    }
+    #add-btn{
+        position: unset;
+        width: 100%;
+        margin-top: 10px;
+        height: auto;
+    }
+    h1{
+        font-size: 15vw;
+        margin-top: 50px;
+    }
+}
